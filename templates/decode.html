@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Decrypt Sound to Text</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/css/style.css">
+
+</head>
+<body>
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center mb-5">
+                <h2 class="heading-section">Decrypt Your Sound to Text if Available</h2>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-10 col-md-12">
+                <div class="wrapper">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="contact-wrap">
+                                <div id="form-message-warning" class="mb-4 w-100 text-center"></div>
+                                <div id="form-message-success" class="mb-4 w-100 text-center">
+                                    {% if decoded_message %}
+                                        <p>Decoded Message:</p>
+                                        <p>{{ decoded_message }}</p>
+                                    {% endif %}
+                                    {% if decrypted_message %}
+                                        <p>Decrypted Message:</p>
+                                        <p>{{ decrypted_message }}</p>
+                                    {% endif %}
+                                </div>
+                                <form method="POST" action="{{ url_for('process_data_input2') }}" id="process_data_input2" name="process_data_input2" class="process_data_input2" enctype="multipart/form-data">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="audio_file">Select the audio file (mp3 or wav) for decryption:</label>
+                                                <input type="file" name="audio_file" accept=".mp3, .wav" placeholder="Select Your Music File" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="key">Enter the Key:</label>
+                                                <input type="text" name="key" id="key" placeholder="Enter the Key" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input type="submit" value="Decrypt" class="btn btn-primary">
+                                                <div class="submitting"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/popper.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+<script src="static/js/jquery.validate.min.js"></script>
+<script src="static/js/main.js"></script>
+
+</body>
+</html>
